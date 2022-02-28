@@ -1,0 +1,201 @@
+/*@import url('https://fonts.googleapis.com/css?family=Ubuntu+Condensed');*/
+/*.menu-main {*/
+/*  list-style: none;*/
+/*  margin: 0;*/
+/*  padding: 25px 0 5px;*/
+/*  text-align: center;*/
+/*  background: white;*/
+/*}*/
+/*.menu-main li {*/
+/*  display: inline-block;*/
+/*  position: relative;*/
+/*}*/
+/*.menu-main li:after {*/
+/*  content: "|";*/
+/*  color: #606060;*/
+/*  display: inline-block;*/
+/*  vertical-align:top;*/
+/*}*/
+/*.menu-main li:last-child:after {content: none;}*/
+/*.menu-main a {*/
+/*  text-decoration: none;*/
+/*  font-family: 'Ubuntu Condensed', sans-serif;*/
+/*  letter-spacing: 2px;*/
+/*  position: relative;*/
+/*  padding-bottom: 20px;*/
+/*  margin: 0 20px 0 20px;*/
+/*  font-size: 17px;*/
+/*  text-transform: uppercase;*/
+/*  display: inline-block;*/
+/*  transition: color .2s;*/
+/*}*/
+/*.menu-main a, .menu-main a:visited {color: #9d999d;}*/
+/*.menu-main a.current, .menu-main a:hover{color: #feb386;}*/
+/*.menu-main a:before,*/
+/*.menu-main a:after {*/
+/*  content: "";*/
+/*  position: absolute;*/
+/*  height: 3px;*/
+/*  top: auto;*/
+/*  right: 50%;*/
+/*  bottom: -1px;*/
+/*  left: 50%;*/
+/*  background: #feb386;*/
+/*  transition: .8s;*/
+/*}*/
+/*.menu-main a:hover:before, .menu-main .current:before {left: 0;}*/
+/*.menu-main a:hover:after, .menu-main .current:after {right: 0;}*/
+/*@media (max-width: 550px) {*/
+/*  .menu-main {padding-top: 0;}*/
+/*  .menu-main li {display: block;}*/
+/*  .menu-main li:after {content: none;}*/
+/*  .menu-main a {*/
+/*    padding: 20px 0 20px;*/
+/*    margin: 0 20px;*/
+/*  }*/
+
+/*  .menu-main {*/
+/*    backface-visibility: hidden;*/
+/*    background: rgba(255,255,255,.8);*/
+/*  }*/
+/*  .down:after {*/
+/*    content: "\f107";*/
+/*    margin-left: 8px;*/
+/*    font-family: FontAwesome;*/
+/*  }*/
+/*  .submenu {*/
+/*    display: none;*/
+/*    background: white;*/
+/*    border: 2px solid #003559;*/
+/*    position: absolute;*/
+/*    left: 0;*/
+/*    visibility: hidden;*/
+/*    opacity: 0;*/
+/*    z-index: 5;*/
+/*    width: 150px;*/
+/*    transform: perspective(600px) rotateX(-90deg);*/
+/*    transform-origin: 0% 0%;*/
+/*    transition: .6s ease-in-out;*/
+/*  }*/
+/*  .menu-main > li:hover .submenu{*/
+/*    display: block;*/
+/*    visibility: visible;*/
+/*    opacity: 1;*/
+/*    transform: perspective(600px) rotateX(0deg);*/
+/*  }*/
+
+/*  .submenu li a {*/
+/*    color: #7f7f7f;*/
+/*    font-size: 13px;*/
+/*    line-height: 36px;*/
+/*    padding: 0 25px;*/
+/*    font-family: 'Kurale', serif;*/
+/*  }*/
+/*  .submenu ul {*/
+/*    position: absolute;*/
+/*  }*/
+/*}*/
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: url(https://html5book.ru/wp-content/uploads/2021/04/background_54.png)
+}
+
+ul {
+  list-style: none;
+}
+
+.topmenu {
+  background: white;
+}
+
+.topmenu a {
+  text-decoration: none;
+  display: block;
+  transition: .4s ease-in-out;
+}
+
+.topmenu>li>a {
+  padding: 20px;
+  color: #767676;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 1px;
+  font-family: 'Exo 2', sans-serif;
+}
+
+.topmenu li a:hover {
+  color: #c0a97a;
+}
+
+.submenu li a {
+  border-bottom: 1px solid #efefef;
+  font-size: 12px;
+  color: #484848;
+  text-transform: uppercase;
+  font-family: 'Exo 2', sans-serif;
+}
+
+@media(max-width: 599px) {
+  .topmenu>li>a {
+    padding: 15px 20px;
+  }
+  .submenu li a {
+    padding: 10px 20px;
+    margin: 0 20px;
+  }
+}
+
+@media(min-width: 600px) {
+  .topmenu {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  .topmenu>li {
+    position: relative;
+  }
+  .topmenu>li:after {
+    content: "";
+    position: absolute;
+    right: 0;
+    width: 1px;
+    height: 12px;
+    background: #d2d2d2;
+    top: 24px;
+    box-shadow: 4px -2px 0 #d2d2d2;
+    transform: rotate(30deg);
+  }
+  .topmenu>li:last-child:after {
+    background: none;
+    box-shadow: none;
+  }
+  .submenu {
+    position: absolute;
+    left: 50%;
+    top: 100%;
+    width: 210px;
+    margin-left: -105px;
+    background: #fafafa;
+    border: 1px solid #ededed;
+    z-index: 5;
+    visibility: hidden;
+    opacity: 0;
+    transform: scale(.8);
+    transition: .4s ease-in-out;
+  }
+  .topmenu>li:hover .submenu {
+    visibility: visible;
+    opacity: 1;
+    transform: scale(1);
+  }
+  .submenu li a {
+    text-align: center;
+    padding: 10px 0;
+    margin: 0 10px;
+  }
+}

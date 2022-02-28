@@ -1,0 +1,30 @@
+<div class="card my-5">
+  <div class="card-body">
+    <table class="table table-bordered table-striped">
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col">Master First Name</th>
+        <th scope="col">Master Last Name</th>
+        <th scope="col">Master Address</th>
+        <th scope="col">Favour Title</th>
+        <th scope="col">Date Start</th>
+        <th scope="col">Date End</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor= "let rec of recs">
+        <td> {{ rec.firstName }} </td>
+        <td> {{ rec.lastName }} </td>
+        <td> {{ rec.address }} </td>
+        <td> {{ rec.title }} </td>
+        <td> {{ rec.dateStart }} </td>
+        <td> {{ rec.dateEnd }} </td>
+
+
+
+
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
