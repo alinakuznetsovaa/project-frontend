@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component} from '@angular/core';
 import {Client} from "../entity/client/client";
 import {ClientService} from "../entity/client/client.service";
 import {ActivatedRoute, Router} from "@angular/router";
+import {rec} from "../entity/rec/rec";
 
 @Component({
   selector: 'app-user-form',
@@ -11,6 +12,8 @@ import {ActivatedRoute, Router} from "@angular/router";
 export class ClientFormComponent {
 
   client: Client;
+  recs: rec[];
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -19,11 +22,16 @@ export class ClientFormComponent {
   }
 
   onSubmit() {
-    this.clientService.createClient(this.client).subscribe(result => this.gotoUserList());
+
+    this.clientService.createClient(this.client).subscribe(result => {
+      this.client = result;
+
+      this.gotoUserList();
+    })
   }
 
   gotoUserList() {
-    this.router.navigate(['/clients']);
+    this.router.navigate(['/clientpage/' + this.client.id]);
   }
 
 

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component} from '@angular/core';
 import {Client} from "../entity/client/client";
 import {ActivatedRoute, Router} from "@angular/router";
 import {ClientService} from "../entity/client/client.service";
@@ -11,17 +11,23 @@ import {ClientService} from "../entity/client/client.service";
 export class ClientFinderComponent {
 
   clientId: string;
+  client: Client;
 
   constructor(private route: ActivatedRoute,
               private router: Router,
-              private clientService: ClientService) { }
+              private clientService: ClientService) {
+  }
 
   onSubmit() {
-    this.clientService.getClientById(this.clientId).subscribe(result => this.gotoClientPage());
+    this.clientService.getClientById(this.clientId).subscribe(
+      result => {
+        this.client = result;
+        this.gotoClientPage()
+      });
   }
 
   gotoClientPage() {
-    this.router.navigate(['/clientpage']);
+    this.router.navigate(['/clientpage/' + this.clientId]);
   }
 
 

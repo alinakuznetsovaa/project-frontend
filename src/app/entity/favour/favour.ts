@@ -1,8 +1,8 @@
 import {Category} from "../category/category";
 
-export class Favour{
+export class Favour {
   id: string;
-  title: string;
   category: Category;
+  title: string;
   time: number;
 }

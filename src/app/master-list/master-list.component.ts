@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Master} from "../entity/master/master";
 import {MasterService} from "../entity/master/master.service";
 
@@ -10,7 +10,9 @@ import {MasterService} from "../entity/master/master.service";
 export class MasterListComponent implements OnInit {
 
   masters: Master[];
-  constructor(private masterService: MasterService) { }
+
+  constructor(private masterService: MasterService) {
+  }
 
   ngOnInit(): void {
     this.masterService.getAllMasters().subscribe(

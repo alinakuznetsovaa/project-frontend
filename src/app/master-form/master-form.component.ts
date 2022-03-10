@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Master} from "../entity/master/master";
 import {ActivatedRoute, Router} from "@angular/router";
 import {MasterService} from "../entity/master/master.service";
+import {rec} from "../entity/rec/rec";
 
 @Component({
   selector: 'app-master-form',
@@ -11,18 +12,27 @@ import {MasterService} from "../entity/master/master.service";
 export class MasterFormComponent implements OnInit {
 
   master: Master;
-  constructor( private route: ActivatedRoute,
-               private router: Router,
-               private masterService: MasterService) {
+  recs: rec[];
+
+  constructor(private route: ActivatedRoute,
+              private router: Router,
+              private masterService: MasterService) {
     this.master = new Master();
   }
+
   onSubmit() {
-    this.masterService.createMaster(this.master).subscribe(result => this.gotoUserList());
+
+    this.masterService.createMaster(this.master).subscribe(
+      result => {
+
+        this.master = result;
+        this.gotoUserList();
+      });
   }
 
 
   gotoUserList() {
-    this.router.navigate(['/masters']);
+    this.router.navigate(['/masterpage/' + this.master.id]);
   }
 
   ngOnInit(): void {

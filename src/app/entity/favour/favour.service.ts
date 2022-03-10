@@ -1,0 +1,36 @@
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {Observable} from "rxjs";
+import {Favour} from "./favour";
+
+@Injectable()
+export class FavourService {
+
+  private favourUrl: string;
+
+  constructor(private http: HttpClient) {
+    this.favourUrl = 'http://localhost:8080/favours';
+  }
+
+  public getAllFavours(): Observable<Favour[]> {
+    return this.http.get<Favour[]>(`${this.favourUrl}`);
+  }
+
+  public getFavourById(id: string): Observable<Favour> {
+    return this.http.get<Favour>(`${this.favourUrl}/${id}`);
+  }
+
+  public createFavour(favour: Favour): Observable<Favour> {
+    return this.http.post<Favour>(`${this.favourUrl}`, favour);
+  }
+
+  public updateFavourPartially(id: string, favour: Favour): Observable<void> {
+    return this.http.patch<void>(`${this.favourUrl}/${id}`, favour);
+  }
+
+  public deleteFavour(id: string): Observable<void> {
+    return this.http.delete<void>(`${this.favourUrl}/${id}`);
+  }
+
+
+}

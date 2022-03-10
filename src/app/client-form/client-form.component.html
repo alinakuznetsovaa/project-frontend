@@ -33,8 +33,10 @@
                required #email="ngModel">
         <div [hidden]="!email.pristine" class="alert alert-danger">Email is required</div>
       </div>
+
       <button type="submit" [disabled]="!userForm.form.valid"
-              class="btn btn-info">Register</button>
+              class="btn btn-info">Register
+      </button>
     </form>
   </div>
 </div>

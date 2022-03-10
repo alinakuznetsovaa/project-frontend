@@ -1,0 +1,98 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" style="color:white;"></a>
+  <div class="collapse navbar-collapse" id="navbarColor02">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" (click)="onOpenModal(category, 'add')">Add Category <span
+          class="sr-only">(current)</span></a>
+      </li>
+
+
+    </ul>
+
+  </div>
+</nav>
+<div class="container" id="main-container">
+  <div class="row">
+    <div *ngFor="let category of categories" class="col-md-6 col-xl-3">
+      <div class="card m-b-30">
+        <div class="card-body row">
+
+          <div>
+            <h5>{{category?.title}}</h5>
+            <p class="m-0">{{category?.id}}</p>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="float-right btn-group btn-group-sm">
+            <a (click)="onOpenModal(category, 'delete')" class="btn btn-light"> Delete </a>
+            <a> </a>
+            <a (click)="gotoAddFavours(category.id)" class="btn btn-light"> Add favours </a>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Add Category Modal -->
+  <div class="modal fade" id="addCategoryModal" tabindex="-1" role="dialog" aria-labelledby="addCategoryModalLabel"
+       aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="addCategoryModalLabel">Add Category</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form #addForm="ngForm" (ngSubmit)="onAddCategory(addForm)">
+
+            <div class="form-group">
+              <label for="title">Title</label>
+              <input type="text" ngModel name="title" class="form-control" id="title" placeholder="Title" required>
+            </div>
+
+            <div class="modal-footer">
+              <button type="button" id="add-category-form" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary">Save changes</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Delete Modal -->
+  <div class="modal fade" id="deleteCategoryModal" tabindex="-1" role="dialog" aria-labelledby="deleteModelLabel"
+       aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="deleteModelLabel">Delete Favour</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Are you sure you want to delete category {{deleteCategory?.title}}?</p>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+            <button (click)="onDeleteCategory(deleteCategory.id)" class="btn btn-danger" data-dismiss="modal">Yes
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Notification for no categories -->
+<div *ngIf="categories?.length == 0" class="col-lg-12 col-md-12 col-xl-12">
+  <div class="alert alert-info" role="alert">
+    <h4 class="alert-heading">NO Favours!</h4>
+    <p>No Favours were found.</p>
+  </div>
+</div>

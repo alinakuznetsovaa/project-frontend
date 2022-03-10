@@ -1,4 +1,4 @@
-export class rec{
+export class rec {
   firstName: string;
   lastName: string;
   address: string;

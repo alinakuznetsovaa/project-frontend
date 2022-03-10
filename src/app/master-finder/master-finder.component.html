@@ -1,9 +1,9 @@
 <div class="card my-5">
   <div class="card-body">
-    <form (ngSubmit)="onSubmit()" #clientPage="ngForm">
+    <form (ngSubmit)="onSubmit()" #masterPage="ngForm">
       <div class="form-group">
         <label for="login">Login</label>
-        <input type="text" [(ngModel)]="clientId"
+        <input type="text" [(ngModel)]="masterId"
                class="form-control"
                id="login"
                name="login"
@@ -12,7 +12,7 @@
       </div>
       <div [hidden]="!login.pristine" class="alert alert-danger">Login is required</div>
 
-      <button type="submit" [disabled]="!clientPage.form.valid"
+      <button type="submit" [disabled]="!masterPage.form.valid"
               class="btn btn-info">Log in
       </button>
     </form>
