@@ -3,6 +3,8 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from "rxjs";
 import {Client} from "./client";
 import {rec} from "../rec/rec";
+import {login} from "../../login/login";
+
 
 @Injectable()
 export class ClientService {
@@ -19,6 +21,9 @@ export class ClientService {
 
   public getClientById(clientId: string): Observable<Client> {
     return this.http.get<Client>(`${this.clientUrl}/${clientId}`);
+  }
+  public getClientOnLogin(log: login): Observable<Client>{
+    return this.http.post<Client>(`${this.clientUrl}/get-client-on-login`, log);
   }
 
   public createClient(client: Client): Observable<Client> {

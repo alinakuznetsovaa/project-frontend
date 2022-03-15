@@ -34,6 +34,7 @@ import {AddFavoursComponent} from './add-favours/add-favours.component';
     CategoriesListComponent,
     MasterPageForClientComponent,
     AddFavoursComponent
+
   ],
   imports: [
     BrowserModule,

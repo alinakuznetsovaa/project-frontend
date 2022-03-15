@@ -2,15 +2,29 @@
   <div class="card-body">
     <form (ngSubmit)="onSubmit()" #clientPage="ngForm">
       <div class="form-group">
-        <label for="login">Login</label>
-        <input type="text" [(ngModel)]="clientId"
+        <label for="login">Email:</label>
+        <input type="text" [(ngModel)]="log.email"
                class="form-control"
                id="login"
                name="login"
-               placeholder="Enter your login"
-               required #login="ngModel">
+               placeholder="Enter your email"
+               required #email="ngModel">
+        <div [hidden]= "!email.pristine" class="alert alert-danger">Email is required</div>
       </div>
-      <div [hidden]="!login.pristine" class="alert alert-danger">Login is required</div>
+
+
+      <div class="form-group">
+        <label for="log">Password:</label>
+        <input type="text" [(ngModel)]="log.password"
+               class="form-control"
+               id="log"
+               name="log"
+               placeholder="Enter your password"
+               required #password="ngModel">
+        <div [hidden]= "!password.pristine" class="alert alert-danger">Password is required</div>
+
+      </div>
+
 
       <button type="submit" [disabled]="!clientPage.form.valid"
               class="btn btn-info">Log in
