@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Master} from "../entity/master/master";
 import {MasterService} from "../entity/master/master.service";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-master-list',
@@ -10,8 +11,11 @@ import {MasterService} from "../entity/master/master.service";
 export class MasterListComponent implements OnInit {
 
   masters: Master[];
+  masterId: string;
 
-  constructor(private masterService: MasterService) {
+  constructor(private route: ActivatedRoute,
+              private router: Router,
+              private masterService: MasterService) {
   }
 
   ngOnInit(): void {
@@ -20,6 +24,12 @@ export class MasterListComponent implements OnInit {
         this.masters = data;
       }
     )
+  }
+
+
+  gotoMasterPage(masterId: string) {
+    this.masterId = masterId;
+    this.router.navigate(['/masters/' + this.masterId]);
   }
 
 }

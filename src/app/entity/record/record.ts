@@ -1,4 +1,4 @@
-import { Client } from "../client/client";
+import {Client} from "../client/client";
 import {Master} from "../master/master";
 import {Favour} from "../favour/favour";
 
@@ -9,5 +9,4 @@ export class Record {
   favour: Favour;
   dateStart: string;
   dateEnd: string;
-
 }

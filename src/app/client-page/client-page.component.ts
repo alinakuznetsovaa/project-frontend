@@ -41,10 +41,6 @@ export class ClientPageComponent implements OnInit {
   }
 
 
-  gotoAddClient() {
-    this.router.navigate(['/addclient']);
-  }
-
   public onOpenModal(client: Client, mode: string): void {
     const container = document.getElementById('main-container');
     const button = document.createElement('button');
@@ -74,5 +70,12 @@ export class ClientPageComponent implements OnInit {
     );
   }
 
+  gotoAddClient() {
+    this.router.navigate(['/addclient']);
+  }
+
+  gotoListOfMasters() {
+    this.router.navigate(['/masters']);
+  }
 
 }

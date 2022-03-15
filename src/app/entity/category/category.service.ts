@@ -20,8 +20,8 @@ export class CategoryService {
     return this.http.get<Category>(`${this.categoryUrl}/${id}`);
   }
 
-  public createCategory(category: Category): Observable<void> {
-    return this.http.post<void>(`${this.categoryUrl}`, category);
+  public createCategory(category: Category): Observable<Category> {
+    return this.http.post<Category>(`${this.categoryUrl}`, category);
   }
 
   public updateCategoryPartially(id: string, category: Category): Observable<void> {

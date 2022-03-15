@@ -15,9 +15,10 @@ import {ClientPageComponent} from './client-page/client-page.component';
 import {MasterFinderComponent} from './master-finder/master-finder.component';
 import {MasterPageComponent} from './master-page/master-page.component';
 import {FavourService} from "./entity/favour/favour.service";
-import {FavoursListComponent} from './favours-list/favours-list.component';
 import {CategoriesListComponent} from './categories-list/categories-list.component';
 import {CategoryService} from "./entity/category/category.service";
+import {MasterPageForClientComponent} from './master-page-for-client/master-page-for-client.component';
+import {AddFavoursComponent} from './add-favours/add-favours.component';
 
 @NgModule({
   declarations: [
@@ -30,8 +31,9 @@ import {CategoryService} from "./entity/category/category.service";
     ClientPageComponent,
     MasterFinderComponent,
     MasterPageComponent,
-    FavoursListComponent,
-    CategoriesListComponent
+    CategoriesListComponent,
+    MasterPageForClientComponent,
+    AddFavoursComponent
   ],
   imports: [
     BrowserModule,

@@ -8,8 +8,9 @@ import {ClientFinderComponent} from "./client-finder/client-finder.component";
 import {ClientPageComponent} from "./client-page/client-page.component";
 import {MasterPageComponent} from "./master-page/master-page.component";
 import {MasterFinderComponent} from "./master-finder/master-finder.component";
-import {FavoursListComponent} from "./favours-list/favours-list.component";
 import {CategoriesListComponent} from "./categories-list/categories-list.component";
+import {MasterPageForClientComponent} from "./master-page-for-client/master-page-for-client.component";
+import {AddFavoursComponent} from "./add-favours/add-favours.component";
 
 const routes: Routes = [
   {path: 'clients', component: ClientListComponent},
@@ -20,8 +21,9 @@ const routes: Routes = [
   {path: 'clientfinder', component: ClientFinderComponent},
   {path: 'masterpage/:masterId', component: MasterPageComponent},
   {path: 'masterfinder', component: MasterFinderComponent},
-  {path: 'addfavours/:id', component: FavoursListComponent},
-  {path: 'addcategories', component: CategoriesListComponent}
+  {path: 'masterpage/:masterId/categories', component: CategoriesListComponent},
+  {path: 'masters/:masterId', component: MasterPageForClientComponent},
+  {path: 'masterpage/:masterId/category/:categoryId/addfavours', component: AddFavoursComponent}
 
 
 ];

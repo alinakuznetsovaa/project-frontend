@@ -5,7 +5,6 @@ import {MasterService} from "../entity/master/master.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {HttpErrorResponse} from "@angular/common/http";
 import {Favour} from "../entity/favour/favour";
-import {FavourService} from "../entity/favour/favour.service";
 
 @Component({
   selector: 'app-master-page',
@@ -77,7 +76,7 @@ export class MasterPageComponent implements OnInit {
   }
 
   gotoAddCategories() {
-    this.router.navigate(['/addcategories']);
+    this.router.navigate(['/masterpage/' + this.masterId + '/categories']);
   }
 
 
