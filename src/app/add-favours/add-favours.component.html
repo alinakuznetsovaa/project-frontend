@@ -1,0 +1,78 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" style="color:white;"></a>
+  <div class="collapse navbar-collapse" id="navbarColor02">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" (click)="onOpenModal(favour,'add')">Add Favour <span
+          class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" (click)="gotoCategoriesPage()">Go back <span
+          class="sr-only">(current)</span></a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<div class="container" id="main-container">
+  <div class="row">
+    <div *ngFor="let fav of favs" class="col-md-6 col-xl-3">
+      <div *ngIf="fav.categoryId == this.categoryId"
+           class="card m-b-30">
+        <div class="card-body row">
+
+          <div class="col-6 card-title align-self-center">
+            <h5>Favour: {{fav?.favourTitle}}</h5>
+
+          </div>
+
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><i class="fa fa-envelope float-right"></i>Category: {{fav?.categoryTitle}}
+          </li>
+          <li class="list-group-item"><i class="fa fa-phone float-right"></i>Time: {{fav?.time}} min</li>
+        </ul>
+        <div class="row">
+          <div class="col-sm-12">
+            <a (click)="onDeleteFavour(fav.favourId)" class="btn btn-light">Delete</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Add Favour Modal -->
+<div class="modal fade" id="addFavourModal" tabindex="-1" role="dialog" aria-labelledby="addFavourModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addFavourModalLabel">Add Favour</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form #addForm="ngForm" (ngSubmit)="onAddFavour(addForm)">
+          <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" ngModel name="title" class="form-control" id="title" placeholder="Title" required>
+          </div>
+          <div class="form-group">
+            <label for="time">Time</label>
+            <input type="text" ngModel name="time" class="form-control" id="time" placeholder="Time" required>
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" id="add-favour-form" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary">Save changes</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
