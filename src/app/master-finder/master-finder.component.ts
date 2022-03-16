@@ -2,6 +2,8 @@ import {Component} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {MasterService} from "../entity/master/master.service";
 import {Master} from "../entity/master/master";
+import {login} from "../login/login";
+import {Client} from "../entity/client/client";
 
 @Component({
   selector: 'app-master-finder',
@@ -11,21 +13,24 @@ import {Master} from "../entity/master/master";
 export class MasterFinderComponent {
   masterId: string;
   master: Master;
+  log: login;
 
   constructor(private route: ActivatedRoute,
               private router: Router,
               private masterService: MasterService) {
+    this.master = new Master();
+    this.log = new login();
   }
 
   onSubmit() {
-    this.masterService.getMasterById(this.masterId).subscribe(result => {
+    this.masterService.getMasterOnLogin(this.log).subscribe(result => {
       this.master = result;
       this.gotoMasterPage()
     });
   }
 
   gotoMasterPage() {
-    this.router.navigate(['/masterpage/' + this.masterId]);
+    this.router.navigate(['/masterpage/' + this.master.id]);
   }
 
 

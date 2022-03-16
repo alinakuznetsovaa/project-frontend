@@ -77,5 +77,7 @@ export class ClientPageComponent implements OnInit {
   gotoListOfMasters() {
     this.router.navigate(['/masters']);
   }
-
+  gotoLoginForm() {
+    this.router.navigate(['/clientfinder']);
+  }
 }

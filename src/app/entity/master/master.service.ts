@@ -3,6 +3,8 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from "rxjs";
 import {Master} from "./master";
 import {rec} from "../rec/rec";
+import {login} from "../../login/login";
+import {Client} from "../client/client";
 
 @Injectable()
 export class MasterService {
@@ -20,6 +22,10 @@ export class MasterService {
 
   public getMasterById(masterId: string): Observable<Master> {
     return this.http.get<Master>(`${this.mastersUrl}/${masterId}`);
+  }
+
+  public getMasterOnLogin(log: login): Observable<Master>{
+    return this.http.post<Master>(`${this.mastersUrl}/get-master-on-login`, log);
   }
 
   public createMaster(master: Master): Observable<Master> {

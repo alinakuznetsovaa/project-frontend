@@ -74,6 +74,9 @@ export class MasterPageComponent implements OnInit {
   gotoAddMaster() {
     this.router.navigate(['/addmaster']);
   }
+  gotoLoginForm() {
+    this.router.navigate(['/masterfinder']);
+  }
 
   gotoAddCategories() {
     this.router.navigate(['/masterpage/' + this.masterId + '/categories']);
