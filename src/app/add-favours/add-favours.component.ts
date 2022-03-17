@@ -98,6 +98,9 @@ export class AddFavoursComponent implements OnInit {
   gotoMasterPage() {
     this.router.navigate(['masterpage/' + this.masterId]);
   }
+  gotoFavour(id: string) {
+    this.router.navigate(['masterpage/' + this.masterId+'/category/' + this.categoryId + '/favour/' + id]);
+  }
 
   gotoCategoriesPage() {
     this.router.navigate(['masterpage/' + this.masterId + '/categories']);

@@ -19,6 +19,7 @@ import {CategoriesListComponent} from './categories-list/categories-list.compone
 import {CategoryService} from "./entity/category/category.service";
 import {MasterPageForClientComponent} from './master-page-for-client/master-page-for-client.component';
 import {AddFavoursComponent} from './add-favours/add-favours.component';
+import { FavourAddDatesComponent } from './favour-add-dates/favour-add-dates.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import {AddFavoursComponent} from './add-favours/add-favours.component';
     MasterPageComponent,
     CategoriesListComponent,
     MasterPageForClientComponent,
-    AddFavoursComponent
+    AddFavoursComponent,
+    FavourAddDatesComponent
 
   ],
   imports: [

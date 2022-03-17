@@ -3,26 +3,24 @@
     <form (ngSubmit)="onSubmit()" #masterPage="ngForm">
 
       <div class="form-group">
-        <label for="login">Email:</label>
-        <input type="text" [(ngModel)]="log.email"
+        <label for="email">Email:</label>
+        <input #email="ngModel" required type="text" [(ngModel)]="log.email"
                class="form-control"
-               id="login"
-               name="login"
-               placeholder="Enter your email"
-               required #email="ngModel">
-        <div [hidden]= "!email.pristine" class="alert alert-danger">Email is required</div>
+               id="email"
+               name="email"
+               placeholder="Enter your email">
+        <div class="alert alert-danger" [hidden]= "email.valid || email.pristine" >Email is required</div>
       </div>
 
 
       <div class="form-group">
-        <label for="log">Password:</label>
-        <input type="text" [(ngModel)]="log.password"
+        <label for="password">Password:</label>
+        <input #password="ngModel" required type="text" [(ngModel)]="log.password"
                class="form-control"
-               id="log"
-               name="log"
-               placeholder="Enter your password"
-               required #password="ngModel">
-        <div [hidden]= "!password.pristine" class="alert alert-danger">Password is required</div>
+               id="password"
+               name="password"
+               placeholder="Enter your password">
+        <div class="alert alert-danger" [hidden]= "password.valid || password.pristine" >Password is required</div>
 
       </div>
 

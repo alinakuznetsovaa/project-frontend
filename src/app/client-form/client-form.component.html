@@ -1,48 +1,46 @@
 <div class="card my-5">
   <div class="card-body">
     <form (ngSubmit)="onSubmit()" #userForm="ngForm">
+
       <div class="form-group">
         <label for="fname">First Name</label>
-        <input type="text" [(ngModel)]="client.firstName"
+        <input  #firstName="ngModel" required type="text" [(ngModel)]="client.firstName"
                class="form-control"
                id="fname"
-               name="name"
-               placeholder="Enter your name"
-               required #firstName="ngModel">
+               name="fname"
+               placeholder="Enter your first name">
       </div>
-      <div [hidden]="!firstName.pristine" class="alert alert-danger">Name is required</div>
+      <div  class="alert alert-danger"  [hidden]="firstName.valid || firstName.pristine"  >Name is required</div>
+
       <div class="form-group">
         <label for="lname">Last Name</label>
-        <input type="text" [(ngModel)]="client.lastName"
+        <input #lastName="ngModel" required type="text" [(ngModel)]="client.lastName"
                class="form-control"
                id="lname"
-               name="name"
-               placeholder="Enter your name"
-               required #lastName="ngModel">
+               name="lname"
+               placeholder="Enter your last name">
       </div>
-      <div [hidden]="!lastName.pristine" class="alert alert-danger">Name is required</div>
+      <div class="alert alert-danger" [hidden]="lastName.valid || lastName.pristine" >Name is required</div>
 
 
       <div class="form-group">
         <label for="email">Email</label>
-        <input type="text" [(ngModel)]="client.email"
+        <input #email="ngModel" required type="text" [(ngModel)]="client.email"
                class="form-control"
                id="email"
                name="email"
-               placeholder="Enter your email address"
-               required #email="ngModel">
-        <div [hidden]="!email.pristine" class="alert alert-danger">Email is required</div>
+               placeholder="Enter your email address">
+        <div class="alert alert-danger" [hidden]="email.valid || email.pristine" >Email is required</div>
       </div>
 
       <div class="form-group">
         <label for="password">Password:</label>
-        <input type="text" [(ngModel)]="client.password"
+        <input #password="ngModel" required type="text" [(ngModel)]="client.password"
                class="form-control"
                id="password"
                name="password"
-               placeholder="Enter your password"
-               required #password="ngModel">
-        <div [hidden]="!password.pristine" class="alert alert-danger">Password is required</div>
+               placeholder="Enter your password">
+        <div class="alert alert-danger" [hidden]="password.valid || password.pristine">Password is required</div>
       </div>
 
       <button type="submit" [disabled]="!userForm.form.valid"

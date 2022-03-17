@@ -11,6 +11,7 @@ import {MasterFinderComponent} from "./master-finder/master-finder.component";
 import {CategoriesListComponent} from "./categories-list/categories-list.component";
 import {MasterPageForClientComponent} from "./master-page-for-client/master-page-for-client.component";
 import {AddFavoursComponent} from "./add-favours/add-favours.component";
+import {FavourAddDatesComponent} from "./favour-add-dates/favour-add-dates.component";
 
 const routes: Routes = [
   {path: 'clients', component: ClientListComponent},
@@ -23,7 +24,8 @@ const routes: Routes = [
   {path: 'masterfinder', component: MasterFinderComponent},
   {path: 'masterpage/:masterId/categories', component: CategoriesListComponent},
   {path: 'masters/:masterId', component: MasterPageForClientComponent},
-  {path: 'masterpage/:masterId/category/:categoryId/addfavours', component: AddFavoursComponent}
+  {path: 'masterpage/:masterId/category/:categoryId/addfavours', component: AddFavoursComponent},
+  {path: 'masterpage/:masterId/category/:categoryId/favour/:id', component: FavourAddDatesComponent}
 
 
 ];

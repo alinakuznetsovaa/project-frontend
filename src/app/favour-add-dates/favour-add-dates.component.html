@@ -1,0 +1,36 @@
+<div class="card-body">
+  <h6>Set your free dates:</h6>
+  <form #form="ngForm" (ngSubmit)="onSubmit()" >
+
+    <div class="form-group">
+      <label for="date">Set Dates</label><br>
+      <input type="datetime-local" name="date" id="date" [(ngModel)]="favourDate.dateStart" required
+             #dateStart="ngModel"/><br>
+      <button type="submit" [disabled]="!form.form.valid" (click)="onSubmit()"
+              class="btn btn-info">Set
+      </button>
+    </div>
+  </form>
+</div>
+
+
+
+<div class="tab-content">
+  <div class="tab-pane active" id="home">
+    <div class="table-responsive">
+      <button> {{date}}</button>
+
+
+    </div>
+  </div>
+</div>
+
+<!--  <div *ngIf="dates?.length != 0" class="tab-content">-->
+<!--  <div class="tab-pane active" id="home">-->
+<!--    <div class="table-responsive">-->
+<!--      <button *ngFor="let date of dates"> {{date}}</button>-->
+
+
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
