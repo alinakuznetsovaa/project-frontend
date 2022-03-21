@@ -45,4 +45,8 @@ export class MasterPageForClientComponent implements OnInit {
   gotoFavour(categoryId: string, favourId: string) {
     this.router.navigate(['client/' + this.clientId + '/master/' + this.masterId + '/category/' + categoryId + '/favour/' + favourId + '/record']);
   }
+
+  gotoMasterList() {
+    this.router.navigate(['client/' + this.clientId + '/masters']);
+  }
 }

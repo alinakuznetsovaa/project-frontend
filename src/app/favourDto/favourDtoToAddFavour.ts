@@ -4,4 +4,5 @@ export class favourDtoToAddFavour {
   categoryTitle: string;
   favourTitle: string;
   time: number;
+  price: number;
 }

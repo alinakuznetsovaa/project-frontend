@@ -25,7 +25,13 @@
       </div>
 
       <button type="submit" [disabled]="!masterPage.form.valid"
-              class="btn btn-info">Log in
+              class="btn btn-info"
+              onclick="(document.getElementById('clientlogin').style.display='none'),
+              (document.getElementById('clientregistration').style.display='none'),
+              (document.getElementById('masterlogin').style.display='none'),
+              (document.getElementById('masterregistration').style.display='none')"
+
+      >Log in
       </button>
     </form>
   </div>

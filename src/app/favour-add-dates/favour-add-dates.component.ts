@@ -92,4 +92,8 @@ export class FavourAddDatesComponent implements OnInit {
   gotoClientPage() {
     this.router.navigate(['clientpage/' + this.clientId]);
   }
+
+  gotoMasterPage() {
+    this.router.navigate(['client/' + this.clientId + '/master/' + this.masterId]);
+  }
 }

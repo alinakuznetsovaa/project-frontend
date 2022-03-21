@@ -36,5 +36,8 @@ export class MasterListComponent implements OnInit {
     this.masterId = masterId;
     this.router.navigate(['client/' + this.clientId + '/master/' + this.masterId]);
   }
+  gotoClientPage() {
+    this.router.navigate(['clientpage/' + this.clientId]);
+  }
 
 }

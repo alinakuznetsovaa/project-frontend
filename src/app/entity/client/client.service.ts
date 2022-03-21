@@ -4,6 +4,7 @@ import {Observable} from "rxjs";
 import {Client} from "./client";
 import {recordDtoForClient} from "../recordDto/RecordDtoForClient";
 import {login} from "../../login/login";
+import {favourDtoForClient} from "../../favourDto/favourDtoForClient";
 
 
 @Injectable()
@@ -40,6 +41,10 @@ export class ClientService {
 
   public getAllRecordsOfClient(clientId: string): Observable<recordDtoForClient[]> {
     return this.http.get<recordDtoForClient[]>(`${this.clientUrl}/get-all-records-of-client/${clientId}`);
+  }
+
+  public getFavoursOfCategory(categoryId: string): Observable<favourDtoForClient[]> {
+    return this.http.get<favourDtoForClient[]>(`${this.clientUrl}/get-favours-of-category/${categoryId}`);
   }
 
 

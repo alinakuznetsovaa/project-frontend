@@ -4,6 +4,7 @@ export class recordDtoForClient {
   lastName: string;
   address: string;
   title: string;
+  price: string;
   dateStart: string;
   dateEnd: string;
 }

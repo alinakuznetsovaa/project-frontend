@@ -12,6 +12,10 @@ import {CategoriesListComponent} from "./categories-list/categories-list.compone
 import {MasterPageForClientComponent} from "./master-page-for-client/master-page-for-client.component";
 import {AddFavoursComponent} from "./add-favours/add-favours.component";
 import {FavourAddDatesComponent} from "./favour-add-dates/favour-add-dates.component";
+import {CategoriesListForClientComponent} from "./categories-list-for-client/categories-list-for-client.component";
+import {
+  FavoursListOfCategoryForClientComponent
+} from "./favours-list-of-category-for-client/favours-list-of-category-for-client.component";
 
 const routes: Routes = [
   {path: 'clients', component: ClientListComponent},
@@ -25,10 +29,10 @@ const routes: Routes = [
   {path: 'masterpage/:masterId/categories', component: CategoriesListComponent},
   {path: 'client/:clientId/master/:masterId', component: MasterPageForClientComponent},
   {path: 'masterpage/:masterId/category/:categoryId/addfavours', component: AddFavoursComponent},
-  {
-    path: 'client/:clientId/master/:masterId/category/:categoryId/favour/:favourId/record',
-    component: FavourAddDatesComponent
-  }
+  {path: 'client/:clientId/master/:masterId/category/:categoryId/favour/:favourId/record', component: FavourAddDatesComponent},
+  {path: 'client/:clientId/categories', component: CategoriesListForClientComponent},
+  {path: 'client/:clientId/category/:categoryId/favours', component: FavoursListOfCategoryForClientComponent}
+
 
 
 ];

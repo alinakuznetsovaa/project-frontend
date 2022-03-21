@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {Client} from "./entity/client/client";
+import { NgZone } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -9,10 +10,10 @@ import {Client} from "./entity/client/client";
 export class AppComponent {
 
   title: string;
-  clients: Client[];
 
   constructor() {
     this.title = 'Spring Boot - Angular Application';
   }
+
 
 }

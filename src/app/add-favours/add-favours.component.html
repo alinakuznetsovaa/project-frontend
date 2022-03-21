@@ -30,6 +30,8 @@
           <li class="list-group-item"><i class="fa fa-envelope float-right"></i>Category: {{fav?.categoryTitle}}
           </li>
           <li class="list-group-item"><i class="fa fa-phone float-right"></i>Time: {{fav?.time}} min</li>
+          <li class="list-group-item"><i class="fa fa-phone float-right"></i>Price: {{fav?.price}} rub</li>
+
         </ul>
         <div class="row">
           <div class="col-sm-12">
@@ -62,6 +64,10 @@
           <div class="form-group">
             <label for="time">Time</label>
             <input type="text" ngModel name="time" class="form-control" id="time" placeholder="Time" required>
+          </div>
+          <div class="form-group">
+            <label for="price">Price</label>
+            <input type="text" ngModel name="price" class="form-control" id="price" placeholder="Price" required>
           </div>
 
           <div class="modal-footer">

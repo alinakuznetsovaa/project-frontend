@@ -90,6 +90,10 @@ export class ClientPageComponent implements OnInit {
     this.router.navigate(['client/' + this.clientId + '/masters']);
   }
 
+  gotoListOfCategories() {
+    this.router.navigate(['client/' + this.clientId + '/categories']);
+  }
+
   gotoLoginForm() {
     this.router.navigate(['/clientfinder']);
   }

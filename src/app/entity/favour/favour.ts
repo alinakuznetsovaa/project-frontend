@@ -5,4 +5,5 @@ export class Favour {
   category: Category;
   title: string;
   time: number;
+  price: number;
 }

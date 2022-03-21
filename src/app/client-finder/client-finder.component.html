@@ -21,8 +21,15 @@
                placeholder="Enter your password">
         <div class="alert alert-danger" [hidden]="password.valid || password.pristine">Password is required</div>
       </div>
-      <button type="submit" [disabled]="!clientPage.form.valid"
-              class="btn btn-info">Log in
+      <button type="submit" [disabled]="!clientPage.form.valid" class="btn btn-info"
+              onclick="(document.getElementById('clientlogin').style.display='none'),
+              (document.getElementById('clientregistration').style.display='none'),
+              (document.getElementById('masterlogin').style.display='none'),
+              (document.getElementById('masterregistration').style.display='none')"
+
+
+
+      >Log in
       </button>
     </form>
   </div>

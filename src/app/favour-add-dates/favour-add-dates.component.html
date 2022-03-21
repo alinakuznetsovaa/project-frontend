@@ -1,3 +1,14 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" style="color:white;"></a>
+  <div class="collapse navbar-collapse" id="navbarColor02">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" (click)="gotoMasterPage()">Go back <span
+          class="sr-only">(current)</span></a>
+      </li>
+    </ul>
+  </div>
+</nav>
 <div class="row">
   <div class="col-md-6 col-xl-3">
     <div class="card m-b-30">
@@ -10,6 +21,8 @@
           <li class="list-group-item"><i class="fa fa-envelope float-right"></i>Category: {{favour.category.title}}
           </li>
           <li class="list-group-item"><i class="fa fa-phone float-right"></i>Time: {{favour.time}} min</li>
+          <li class="list-group-item"><i class="fa fa-phone float-right"></i>Price: {{favour.price}} rub</li>
+
           <li class="list-group-item"><i class="fa fa-phone float-right"></i> Master works from 10:00 to 21:00
           </li>
           <li class="list-group-item"><i class="fa fa-phone float-right"></i> Choose a date depending on the free time
