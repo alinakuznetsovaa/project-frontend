@@ -1,7 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import {favourDate} from "../favour-date/favourDate";
 import {ActivatedRoute, Router} from "@angular/router";
-import {MasterService} from "../entity/master/master.service";
+import {Record} from "../entity/record/record";
+import {RecordService} from "../entity/record/record.service";
+import {recordDtoForClientToCreateRecord} from "../entity/recordDto/RecordDtoForClientToCreateRecord";
+import {FavourService} from "../entity/favour/favour.service";
+import {Favour} from "../entity/favour/favour";
+import {map} from 'rxjs/operators';
 
 
 @Component({
@@ -11,30 +16,80 @@ import {MasterService} from "../entity/master/master.service";
 })
 export class FavourAddDatesComponent implements OnInit {
 
-  date: Date;
+  dateStart: Date;
+  dateEnd: Date;
   favourDate: favourDate;
   dates: Date[];
   masterId: string;
   categoryId: string;
+  clientId: string;
+  favourId: string;
+  record: Record;
+  recs: recordDtoForClientToCreateRecord[];
+  favour: Favour;
+  minDate: string;
 
   constructor(private route: ActivatedRoute,
-              private router: Router, private masterService: MasterService) {
+              private router: Router, private recordService: RecordService, private favourService: FavourService) {
     this.favourDate = new favourDate();
+    this.record = new Record();
+    this.favour = new Favour();
+
+    this.minDate = new Date().toISOString().substring(0, 16);
   }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      this.masterId = params['masterId'],
-        this.categoryId = params['categoryId'],
-      this.favourDate.favourId = params['id'];
+      this.clientId = params['clientId'];
     });
+    this.route.params.subscribe(params => {
+      this.masterId = params['masterId']
+    });
+    this.route.params.subscribe(params => {
+      this.categoryId = params['categoryId']
+    });
+    this.route.params.subscribe(params => {
+      this.favourId = params['favourId']
+    });
+
+
+    this.recordService.getRecordsOfMasterOnFavour(this.masterId, this.favourId).pipe(map((data: recordDtoForClientToCreateRecord[]) => {
+      return data.sort((a, b) => {
+        if (a.dateStart > b.dateStart) {
+          return -1;
+        } else if (a.dateStart < b.dateStart) {
+          return 1;
+        }
+
+        return 0;
+      });
+    })).subscribe(
+      data => {
+        this.recs = data;
+      }
+    )
+
+    this.favourService.getFavourById(this.favourId).subscribe(
+      result => {
+        this.favour = result;
+      }
+    )
+
   }
 
-  onSubmit() {
-    this.date = this.favourDate.dateStart;
-    this.masterService.setFreeDatesOfMaster(this.categoryId,this.masterId,this.date).subscribe(
+  onCreateRecord() {
 
-    );
+    this.record.dateStart = this.favourDate.dateStart;
+    this.recordService.createRecord(this.clientId, this.masterId, this.favourId, this.record).subscribe(
+      result => {
+
+        this.gotoClientPage();
+
+      }
+    )
   }
 
+  gotoClientPage() {
+    this.router.navigate(['clientpage/' + this.clientId]);
+  }
 }

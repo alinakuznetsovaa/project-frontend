@@ -1,5 +1,4 @@
-export class fav {
-
+export class favourDtoToAddFavour {
   categoryId: string;
   favourId: string;
   categoryTitle: string;

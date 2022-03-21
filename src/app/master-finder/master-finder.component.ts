@@ -3,7 +3,6 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {MasterService} from "../entity/master/master.service";
 import {Master} from "../entity/master/master";
 import {login} from "../login/login";
-import {Client} from "../entity/client/client";
 
 @Component({
   selector: 'app-master-finder',

@@ -1,10 +1,13 @@
 import {Component, OnInit} from '@angular/core';
-import {rec} from "../entity/rec/rec";
+import {recordDtoForClient} from "../entity/recordDto/RecordDtoForClient";
 import {Master} from "../entity/master/master";
 import {MasterService} from "../entity/master/master.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {HttpErrorResponse} from "@angular/common/http";
 import {Favour} from "../entity/favour/favour";
+import {map} from 'rxjs/operators';
+import {RecordService} from "../entity/record/record.service";
+
 
 @Component({
   selector: 'app-master-page',
@@ -19,9 +22,9 @@ export class MasterPageComponent implements OnInit {
   favour: Favour;
 
 
-  recs: rec[];
+  recs: recordDtoForClient[];
 
-  constructor(private router: Router, private route: ActivatedRoute, private masterService: MasterService) {
+  constructor(private router: Router, private route: ActivatedRoute, private masterService: MasterService, private recordService: RecordService) {
   }
 
   ngOnInit(): void {
@@ -33,9 +36,33 @@ export class MasterPageComponent implements OnInit {
         this.master = data;
       }
     )
-    this.masterService.getRecordsOfMaster(this.masterId).subscribe(
+    this.masterService.getRecordsOfMaster(this.masterId).pipe(map((data: recordDtoForClient[]) => {
+      return data.sort((a, b) => {
+        if (a.dateStart > b.dateStart) {
+          return -1;
+        } else if (a.dateStart < b.dateStart) {
+          return 1;
+        }
+
+        return 0;
+      });
+    })).subscribe(
       data => {
         this.recs = data;
+      }
+    )
+  }
+
+  deleteRecord(recordId: string) {
+    this.recordService.deleteRecord(recordId).subscribe(
+      result => {
+        this.masterService.getRecordsOfMaster(this.masterId).subscribe(
+          data => {
+            this.recs = data;
+
+
+          }
+        )
       }
     )
   }
@@ -70,10 +97,15 @@ export class MasterPageComponent implements OnInit {
     );
   }
 
+  canDeleteRecord(dateStr: string): boolean {
+    const date = new Date(dateStr).getTime();
+    return date < Date.now();
+  }
 
   gotoAddMaster() {
     this.router.navigate(['/addmaster']);
   }
+
   gotoLoginForm() {
     this.router.navigate(['/masterfinder']);
   }

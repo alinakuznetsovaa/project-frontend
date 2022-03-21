@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Master} from "../entity/master/master";
 import {ActivatedRoute, Router} from "@angular/router";
 import {MasterService} from "../entity/master/master.service";
-import {rec} from "../entity/rec/rec";
+import {recordDtoForClient} from "../entity/recordDto/RecordDtoForClient";
 
 @Component({
   selector: 'app-master-form',
@@ -12,7 +12,7 @@ import {rec} from "../entity/rec/rec";
 export class MasterFormComponent implements OnInit {
 
   master: Master;
-  recs: rec[];
+  recs: recordDtoForClient[];
 
   constructor(private route: ActivatedRoute,
               private router: Router,

@@ -2,9 +2,8 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from "rxjs";
 import {Master} from "./master";
-import {rec} from "../rec/rec";
+import {recordDtoForClient} from "../recordDto/RecordDtoForClient";
 import {login} from "../../login/login";
-import {Client} from "../client/client";
 
 @Injectable()
 export class MasterService {
@@ -24,11 +23,11 @@ export class MasterService {
     return this.http.get<Master>(`${this.mastersUrl}/${masterId}`);
   }
 
-  public getMasterOnLogin(log: login): Observable<Master>{
+  public getMasterOnLogin(log: login): Observable<Master> {
     return this.http.post<Master>(`${this.mastersUrl}/get-master-on-login`, log);
   }
 
-  public setFreeDatesOfMaster(category_id: string, master_id: string, date: Date): Observable<void>{
+  public setFreeDatesOfMaster(category_id: string, master_id: string, date: Date): Observable<void> {
     return this.http.post<void>(`${this.mastersUrl}/category/${category_id}/master/${master_id}/addfreetime`, date);
   }
 
@@ -44,8 +43,8 @@ export class MasterService {
     return this.http.delete<void>(`${this.mastersUrl}/${masterId}`);
   }
 
-  public getRecordsOfMaster(masterId: string): Observable<rec[]> {
-    return this.http.get<rec[]>(`${this.mastersUrl}/get-all-records-of-master/${masterId}`)
+  public getRecordsOfMaster(masterId: string): Observable<recordDtoForClient[]> {
+    return this.http.get<recordDtoForClient[]>(`${this.mastersUrl}/get-all-records-of-master/${masterId}`)
   }
 
 

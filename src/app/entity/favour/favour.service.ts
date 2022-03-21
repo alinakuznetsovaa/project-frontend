@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from "rxjs";
 import {Favour} from "./favour";
-import {fav} from "../../fav/fav";
+import {favourDtoToAddFavour} from "../../favourDto/favourDtoToAddFavour";
 
 @Injectable()
 export class FavourService {
@@ -21,8 +21,8 @@ export class FavourService {
     return this.http.get<Favour>(`${this.favourUrl}/${id}`);
   }
 
-  public getFavoursOfMaster(id: string): Observable<fav[]> {
-    return this.http.get<fav[]>(`${this.favourUrl}/${id}/get-favours-of-master`);
+  public getFavoursOfMaster(id: string): Observable<favourDtoToAddFavour[]> {
+    return this.http.get<favourDtoToAddFavour[]>(`${this.favourUrl}/${id}/get-favours-of-master`);
   }
 
   public createFavour(masterId: string, categoryId: string, favour: Favour): Observable<Favour> {

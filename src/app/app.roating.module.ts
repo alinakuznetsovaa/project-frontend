@@ -16,16 +16,19 @@ import {FavourAddDatesComponent} from "./favour-add-dates/favour-add-dates.compo
 const routes: Routes = [
   {path: 'clients', component: ClientListComponent},
   {path: 'addclient', component: ClientFormComponent},
-  {path: 'masters', component: MasterListComponent},
+  {path: 'client/:clientId/masters', component: MasterListComponent},
   {path: 'addmaster', component: MasterFormComponent},
   {path: 'clientpage/:clientId', component: ClientPageComponent},
   {path: 'clientfinder', component: ClientFinderComponent},
   {path: 'masterpage/:masterId', component: MasterPageComponent},
   {path: 'masterfinder', component: MasterFinderComponent},
   {path: 'masterpage/:masterId/categories', component: CategoriesListComponent},
-  {path: 'masters/:masterId', component: MasterPageForClientComponent},
+  {path: 'client/:clientId/master/:masterId', component: MasterPageForClientComponent},
   {path: 'masterpage/:masterId/category/:categoryId/addfavours', component: AddFavoursComponent},
-  {path: 'masterpage/:masterId/category/:categoryId/favour/:id', component: FavourAddDatesComponent}
+  {
+    path: 'client/:clientId/master/:masterId/category/:categoryId/favour/:favourId/record',
+    component: FavourAddDatesComponent
+  }
 
 
 ];

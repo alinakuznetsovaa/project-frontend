@@ -2,6 +2,8 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from "rxjs";
 import {Record} from "./record";
+import {recordDtoForClient} from "../recordDto/RecordDtoForClient";
+import {recordDtoForClientToCreateRecord} from "../recordDto/RecordDtoForClientToCreateRecord";
 
 
 
@@ -15,7 +17,11 @@ export class RecordService {
   }
 
   public getAllRecords(): Observable<Record[]> {
-    return this.http.get<Record[]>(this.RecordsUrl);
+    return this.http.get<Record[]>(`${this.RecordsUrl}`);
+  }
+
+  public getRecordsOfMasterOnFavour(masterId: string, favourId: string): Observable<recordDtoForClientToCreateRecord[]> {
+    return this.http.get<recordDtoForClientToCreateRecord[]>(`${this.RecordsUrl}/master/${masterId}/favour/${favourId}`);
   }
 
 
@@ -24,8 +30,8 @@ export class RecordService {
   }
 
 
-  public createRecord(record: Record): Observable<Record> {
-    return this.http.post<Record>(`${this.RecordsUrl}`, record);
+  public createRecord(clientId: string, masterId: string, favourId: string,record: Record): Observable<void> {
+    return this.http.post<void>(`${this.RecordsUrl}/create/client/${clientId}/master/${masterId}/favour/${favourId}`, record);
   }
 
   public updateRecord(recordId: string, record: Record): Observable<void> {

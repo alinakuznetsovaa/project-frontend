@@ -12,6 +12,7 @@ export class MasterListComponent implements OnInit {
 
   masters: Master[];
   masterId: string;
+  clientId: string;
 
   constructor(private route: ActivatedRoute,
               private router: Router,
@@ -19,6 +20,10 @@ export class MasterListComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.route.params.subscribe(params => {
+      this.clientId = params['clientId'];
+    });
+
     this.masterService.getAllMasters().subscribe(
       data => {
         this.masters = data;
@@ -29,7 +34,7 @@ export class MasterListComponent implements OnInit {
 
   gotoMasterPage(masterId: string) {
     this.masterId = masterId;
-    this.router.navigate(['/masters/' + this.masterId]);
+    this.router.navigate(['client/' + this.clientId + '/master/' + this.masterId]);
   }
 
 }

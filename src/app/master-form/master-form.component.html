@@ -9,7 +9,7 @@
                name="fname"
                placeholder="Enter your first name">
       </div>
-      <div class="alert alert-danger" [hidden]="firstName.valid || firstName.pristine" >First Name is required</div>
+      <div class="alert alert-danger" [hidden]="firstName.valid || firstName.pristine">First Name is required</div>
 
       <div class="form-group">
         <label for="lname">Last Name</label>
@@ -19,7 +19,7 @@
                name="lname"
                placeholder="Enter your last name">
       </div>
-      <div  class="alert alert-danger" [hidden]="lastName.valid || lastName.pristine">Last Name is required</div>
+      <div class="alert alert-danger" [hidden]="lastName.valid || lastName.pristine">Last Name is required</div>
 
       <div class="form-group">
         <label for="email">Email</label>
@@ -28,7 +28,7 @@
                id="email"
                name="email"
                placeholder="Enter your email">
-        <div class="alert alert-danger" [hidden]="email.valid || email.pristine" >Email is required</div>
+        <div class="alert alert-danger" [hidden]="email.valid || email.pristine">Email is required</div>
       </div>
 
       <div class="form-group">
@@ -38,7 +38,7 @@
                id="address"
                name="address"
                placeholder="Enter your address">
-        <div class="alert alert-danger" [hidden]="address.valid || address.pristine" >Address is required</div>
+        <div class="alert alert-danger" [hidden]="address.valid || address.pristine">Address is required</div>
       </div>
 
       <div class="form-group">
@@ -48,7 +48,7 @@
                id="password"
                name="password"
                placeholder="Enter your password">
-        <div class="alert alert-danger" [hidden]="password.valid || password.pristine" >Password is required</div>
+        <div class="alert alert-danger" [hidden]="password.valid || password.pristine">Password is required</div>
       </div>
 
       <button type="submit" [disabled]="!masterForm.form.valid"

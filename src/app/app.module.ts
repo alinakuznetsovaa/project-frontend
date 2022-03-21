@@ -19,7 +19,8 @@ import {CategoriesListComponent} from './categories-list/categories-list.compone
 import {CategoryService} from "./entity/category/category.service";
 import {MasterPageForClientComponent} from './master-page-for-client/master-page-for-client.component';
 import {AddFavoursComponent} from './add-favours/add-favours.component';
-import { FavourAddDatesComponent } from './favour-add-dates/favour-add-dates.component';
+import {FavourAddDatesComponent} from './favour-add-dates/favour-add-dates.component';
+import {RecordService} from "./entity/record/record.service";
 
 @NgModule({
   declarations: [
@@ -44,7 +45,7 @@ import { FavourAddDatesComponent } from './favour-add-dates/favour-add-dates.com
     HttpClientModule,
     FormsModule
   ],
-  providers: [ClientService, MasterService, FavourService, CategoryService],
+  providers: [ClientService, MasterService, FavourService, CategoryService, RecordService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

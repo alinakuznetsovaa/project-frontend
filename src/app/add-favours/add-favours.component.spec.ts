@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { AddFavoursComponent } from './add-favours.component';
+import {AddFavoursComponent} from './add-favours.component';
 
 describe('AddFavoursComponent', () => {
   let component: AddFavoursComponent;
@@ -8,9 +8,9 @@ describe('AddFavoursComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AddFavoursComponent ]
+      declarations: [AddFavoursComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

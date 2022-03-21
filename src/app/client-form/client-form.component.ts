@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {Client} from "../entity/client/client";
 import {ClientService} from "../entity/client/client.service";
 import {ActivatedRoute, Router} from "@angular/router";
-import {rec} from "../entity/rec/rec";
+import {recordDtoForClient} from "../entity/recordDto/RecordDtoForClient";
 
 @Component({
   selector: 'app-user-form',
@@ -12,7 +12,7 @@ import {rec} from "../entity/rec/rec";
 export class ClientFormComponent {
 
   client: Client;
-  recs: rec[];
+  recs: recordDtoForClient[];
 
   constructor(
     private route: ActivatedRoute,
@@ -33,6 +33,5 @@ export class ClientFormComponent {
   gotoUserList() {
     this.router.navigate(['/clientpage/' + this.client.id]);
   }
-
 
 }

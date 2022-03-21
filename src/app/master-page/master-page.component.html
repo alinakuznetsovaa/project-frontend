@@ -9,7 +9,7 @@
               <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle"
                    width="150">
               <div class="mt-3">
-                <p class="text-muted font-size-sm">Your Login: {{master.id}}</p>
+              <p class="text-muted font-size-sm">Your Login: {{master.id}}</p>
               </div>
             </div>
           </div>
@@ -131,7 +131,11 @@
               <td> {{ rec.title }} </td>
               <td> {{ rec.dateStart }} </td>
               <td> {{ rec.dateEnd }} </td>
-
+              <td>
+                <div *ngIf="!canDeleteRecord(rec.dateStart)">
+                  <button (click)="deleteRecord(rec.recordId)" class="btn btn-light"> Delete</button>
+                </div>
+              </td>
 
             </tr>
             </tbody>

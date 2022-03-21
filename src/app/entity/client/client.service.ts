@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from "rxjs";
 import {Client} from "./client";
-import {rec} from "../rec/rec";
+import {recordDtoForClient} from "../recordDto/RecordDtoForClient";
 import {login} from "../../login/login";
 
 
@@ -38,8 +38,8 @@ export class ClientService {
     return this.http.delete<void>(`${this.clientUrl}/${clientId}`);
   }
 
-  public getAllRecordsOfClient(clientId: string): Observable<rec[]> {
-    return this.http.get<rec[]>(`${this.clientUrl}/get-all-records-of-client/${clientId}`);
+  public getAllRecordsOfClient(clientId: string): Observable<recordDtoForClient[]> {
+    return this.http.get<recordDtoForClient[]>(`${this.clientUrl}/get-all-records-of-client/${clientId}`);
   }
 
 

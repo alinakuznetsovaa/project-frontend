@@ -7,7 +7,7 @@ import {CategoryService} from "../entity/category/category.service";
 import {FavourService} from "../entity/favour/favour.service";
 import {HttpErrorResponse} from "@angular/common/http";
 import {NgForm} from "@angular/forms";
-import {fav} from "../fav/fav";
+import {favourDtoToAddFavour} from "../favourDto/favourDtoToAddFavour";
 
 @Component({
   selector: 'app-add-favours',
@@ -23,8 +23,8 @@ export class AddFavoursComponent implements OnInit {
   public masterId: string;
   public master: Master;
   public favours: Favour[];
-  public favs: fav[];
-  public fav: fav;
+  public favs: favourDtoToAddFavour[];
+  public fav: favourDtoToAddFavour;
 
   constructor(private router: Router, private route: ActivatedRoute, private categoryService: CategoryService, private favourService: FavourService) {
   }
@@ -42,7 +42,7 @@ export class AddFavoursComponent implements OnInit {
 
   public getFavours(): void {
     this.favourService.getFavoursOfMaster(this.masterId).subscribe(
-      (response: fav[]) => {
+      (response: favourDtoToAddFavour[]) => {
         this.favs = response;
         console.log(this.favs);
       },
@@ -95,11 +95,8 @@ export class AddFavoursComponent implements OnInit {
     );
   }
 
-  gotoMasterPage() {
-    this.router.navigate(['masterpage/' + this.masterId]);
-  }
   gotoFavour(id: string) {
-    this.router.navigate(['masterpage/' + this.masterId+'/category/' + this.categoryId + '/favour/' + id]);
+    this.router.navigate(['masterpage/' + this.masterId + '/category/' + this.categoryId + '/favour/' + id]);
   }
 
   gotoCategoriesPage() {

@@ -1,36 +1,55 @@
-<div class="card-body">
-  <h6>Set your free dates:</h6>
-  <form #form="ngForm" (ngSubmit)="onSubmit()" >
+<div class="row">
+  <div class="col-md-6 col-xl-3">
+    <div class="card m-b-30">
+      <ul class="list-group list-group-flush">
+        <h5 class="list-group-item"><i class="fa fa-envelope float-right"></i>Favour: {{favour.title}} </h5>
+      </ul>
 
-    <div class="form-group">
-      <label for="date">Set Dates</label><br>
-      <input type="datetime-local" name="date" id="date" [(ngModel)]="favourDate.dateStart" required
-             #dateStart="ngModel"/><br>
-      <button type="submit" [disabled]="!form.form.valid" (click)="onSubmit()"
-              class="btn btn-info">Set
-      </button>
-    </div>
-  </form>
-</div>
+      <form #form="ngForm">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><i class="fa fa-envelope float-right"></i>Category: {{favour.category.title}}
+          </li>
+          <li class="list-group-item"><i class="fa fa-phone float-right"></i>Time: {{favour.time}} min</li>
+          <li class="list-group-item"><i class="fa fa-phone float-right"></i> Master works from 10:00 to 21:00
+          </li>
+          <li class="list-group-item"><i class="fa fa-phone float-right"></i> Choose a date depending on the free time
+            of the master:
+          </li>
+          <li class="list-group-item"><i class="fa fa-phone float-right"></i>
+            <div class="form-group">
+              <div> Set date start of favour:
+                <input type="datetime-local" min="{{minDate}}" name="date" id="dateStart"
+                       [(ngModel)]="favourDate.dateStart" required
+                       #dateStart="ngModel"/>
+              </div>
+            </div>
+          </li>
 
-
-
-<div class="tab-content">
-  <div class="tab-pane active" id="home">
-    <div class="table-responsive">
-      <button> {{date}}</button>
-
-
+          <li class="list-group-item"><i class="fa fa-phone float-right"></i>
+            <button type="submit" [disabled]="!form.form.valid" (click)="onCreateRecord()"
+                    class="btn btn-light">Create Record
+            </button>
+          </li>
+        </ul>
+      </form>
     </div>
   </div>
+  <div class="card-body">
+    <table class="table table-bordered table-striped">
+      <thead class="thead-light">
+      <tr>
+        <th scope="col">Title</th>
+        <th scope="col">Date Start</th>
+        <th scope="col">Date End</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let recor of recs">
+        <td>{{ recor.title }}</td>
+        <td>{{ recor.dateStart }}</td>
+        <td>{{ recor.dateEnd }}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
-
-<!--  <div *ngIf="dates?.length != 0" class="tab-content">-->
-<!--  <div class="tab-pane active" id="home">-->
-<!--    <div class="table-responsive">-->
-<!--      <button *ngFor="let date of dates"> {{date}}</button>-->
-
-
-<!--    </div>-->
-<!--  </div>-->
-<!--</div>-->

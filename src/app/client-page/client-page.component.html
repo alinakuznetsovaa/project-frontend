@@ -9,7 +9,7 @@
               <img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="Admin" class="rounded-circle"
                    width="150">
               <div class="mt-3">
-                <p class="text-muted font-size-sm">Your Login: {{client.id}}</p>
+                <p class="text-muted font-size-sm">{{client.firstName}} {{client.lastName}}</p>
               </div>
             </div>
           </div>
@@ -74,7 +74,7 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="deleteModelLabel">Delete Employee</h5>
+            <h5 class="modal-title" id="deleteModelLabel">Delete Account </h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -110,6 +110,7 @@
               <th>Favour Title</th>
               <th>Date Start</th>
               <th>Date End</th>
+              <th>Delete Record</th>
             </tr>
             </thead>
             <tbody>
@@ -120,8 +121,11 @@
               <td> {{ rec.title }} </td>
               <td> {{ rec.dateStart }} </td>
               <td> {{ rec.dateEnd }} </td>
-
-
+              <td>
+                <div *ngIf="!canDeleteRecord(rec.dateStart)">
+                  <button (click)="deleteRecord(rec.recordId)" class="btn btn-light"> Delete</button>
+                </div>
+              </td>
             </tr>
             </tbody>
           </table>

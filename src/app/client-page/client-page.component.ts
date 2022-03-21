@@ -1,9 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {Client} from "../entity/client/client";
 import {ClientService} from "../entity/client/client.service";
-import {rec} from "../entity/rec/rec";
+import {recordDtoForClient} from "../entity/recordDto/RecordDtoForClient";
 import {ActivatedRoute, Router} from "@angular/router";
 import {HttpErrorResponse} from "@angular/common/http";
+import {RecordService} from "../entity/record/record.service";
+import {map} from 'rxjs/operators';
 
 @Component({
   selector: 'app-client-page',
@@ -16,9 +18,11 @@ export class ClientPageComponent implements OnInit {
   client: Client;
   editClient: Client;
   deleteClient: Client;
-  recs: rec[];
+  recs: recordDtoForClient[];
 
-  constructor(private router: Router, private route: ActivatedRoute, private clientService: ClientService) {
+  //currentDate = new Date();
+
+  constructor(private router: Router, private route: ActivatedRoute, private clientService: ClientService, private recordService: RecordService) {
   }
 
   ngOnInit(): void {
@@ -31,11 +35,19 @@ export class ClientPageComponent implements OnInit {
         this.client = data;
       }
     )
-    this.clientService.getAllRecordsOfClient(this.clientId).subscribe(
+    this.clientService.getAllRecordsOfClient(this.clientId).pipe(map((data: recordDtoForClient[]) => {
+      return data.sort((a, b) => {
+        if (a.dateStart > b.dateStart) {
+          return -1;
+        } else if (a.dateStart < b.dateStart) {
+          return 1;
+        }
+
+        return 0;
+      });
+    })).subscribe(
       data => {
         this.recs = data;
-
-
       }
     )
   }
@@ -75,9 +87,29 @@ export class ClientPageComponent implements OnInit {
   }
 
   gotoListOfMasters() {
-    this.router.navigate(['/masters']);
+    this.router.navigate(['client/' + this.clientId + '/masters']);
   }
+
   gotoLoginForm() {
     this.router.navigate(['/clientfinder']);
+  }
+
+  canDeleteRecord(dateStr: string): boolean {
+    const date = new Date(dateStr).getTime();
+    return date < Date.now();
+  }
+
+  deleteRecord(recordId: string) {
+    this.recordService.deleteRecord(recordId).subscribe(
+      result => {
+        this.clientService.getAllRecordsOfClient(this.clientId).subscribe(
+          data => {
+            this.recs = data;
+
+
+          }
+        )
+      }
+    )
   }
 }

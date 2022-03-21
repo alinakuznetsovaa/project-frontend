@@ -7,6 +7,6 @@ export class Record {
   client: Client;
   master: Master;
   favour: Favour;
-  dateStart: string;
-  dateEnd: string;
+  dateStart: Date;
+  dateEnd: Date;
 }

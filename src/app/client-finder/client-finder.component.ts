@@ -16,6 +16,7 @@ export class ClientFinderComponent {
   password: string;
   client: Client;
   log: login;
+
   constructor(private route: ActivatedRoute,
               private router: Router,
               private clientService: ClientService,
