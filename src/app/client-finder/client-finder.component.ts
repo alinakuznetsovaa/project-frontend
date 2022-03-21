@@ -3,6 +3,8 @@ import {Client} from "../entity/client/client";
 import {ActivatedRoute, Router} from "@angular/router";
 import {ClientService} from "../entity/client/client.service";
 import {login} from "../login/login";
+import {HttpErrorResponse} from "@angular/common/http";
+
 
 @Component({
   selector: 'app-client-page',
@@ -16,6 +18,7 @@ export class ClientFinderComponent {
   password: string;
   client: Client;
   log: login;
+  isClientFound: boolean = true;
 
   constructor(private route: ActivatedRoute,
               private router: Router,
@@ -30,13 +33,22 @@ export class ClientFinderComponent {
       result => {
         this.client = result;
         this.clientId = this.client.id;
-        this.gotoClientPage()
-      });
+        this.gotoClientPage();
+      }, (error: HttpErrorResponse) => {
+
+      this.isClientFound = false;
+    }
+  );
   }
 
   gotoClientPage() {
     this.router.navigate(['/clientpage/' + this.clientId]);
   }
+  gotoRegistrationPage() {
+    this.router.navigate(['addclient/']);
+  }
+
+
 
 
 }

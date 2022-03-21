@@ -3,6 +3,8 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {MasterService} from "../entity/master/master.service";
 import {Master} from "../entity/master/master";
 import {login} from "../login/login";
+import {HttpErrorResponse} from "@angular/common/http";
+
 
 @Component({
   selector: 'app-master-finder',
@@ -13,6 +15,7 @@ export class MasterFinderComponent {
   masterId: string;
   master: Master;
   log: login;
+  isMasterFound: boolean = true;
 
   constructor(private route: ActivatedRoute,
               private router: Router,
@@ -24,12 +27,21 @@ export class MasterFinderComponent {
   onSubmit() {
     this.masterService.getMasterOnLogin(this.log).subscribe(result => {
       this.master = result;
-      this.gotoMasterPage()
-    });
+      this.gotoMasterPage();
+    },(error: HttpErrorResponse) => {
+
+      this.isMasterFound = false;
+    }
+  );
   }
+
 
   gotoMasterPage() {
     this.router.navigate(['/masterpage/' + this.master.id]);
+  }
+
+  gotoRegistrationPage() {
+    this.router.navigate(['addmaster/']);
   }
 
 
