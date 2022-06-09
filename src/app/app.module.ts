@@ -23,6 +23,7 @@ import {FavourAddDatesComponent} from './favour-add-dates/favour-add-dates.compo
 import {RecordService} from "./entity/record/record.service";
 import { CategoriesListForClientComponent } from './categories-list-for-client/categories-list-for-client.component';
 import { FavoursListOfCategoryForClientComponent } from './favours-list-of-category-for-client/favours-list-of-category-for-client.component';
+import {EmailService} from "./entity/email/email.service";
 
 @NgModule({
   declarations: [
@@ -49,7 +50,7 @@ import { FavoursListOfCategoryForClientComponent } from './favours-list-of-categ
     HttpClientModule,
     FormsModule
   ],
-  providers: [ClientService, MasterService, FavourService, CategoryService, RecordService],
+  providers: [ClientService, MasterService, FavourService, CategoryService, RecordService, EmailService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

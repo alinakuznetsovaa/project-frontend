@@ -35,7 +35,7 @@
 
       <div class="form-group">
         <label for="password">Password:</label>
-        <input #password="ngModel" required type="text" [(ngModel)]="client.password"
+        <input #password="ngModel" required type="password" [(ngModel)]="client.password"
                class="form-control"
                id="password"
                name="password"
@@ -44,7 +44,12 @@
       </div>
 
       <button type="submit" [disabled]="!userForm.form.valid"
-              class="btn btn-info">Register
+              class="btn btn-info"
+              onclick="(document.getElementById('clientlogin').style.display='none'),
+              (document.getElementById('clientregistration').style.display='none'),
+              (document.getElementById('masterlogin').style.display='none'),
+              (document.getElementById('masterregistration').style.display='none')"
+      >Register
       </button>
     </form>
   </div>

@@ -7,6 +7,9 @@ import {HttpErrorResponse} from "@angular/common/http";
 import {Favour} from "../entity/favour/favour";
 import {map} from 'rxjs/operators';
 import {RecordService} from "../entity/record/record.service";
+import {Email} from "../entity/email/mail";
+import {EmailService} from "../entity/email/email.service";
+import {NgForm} from '@angular/forms'
 
 
 @Component({
@@ -22,9 +25,11 @@ export class MasterPageComponent implements OnInit {
   favour: Favour;
 
 
+  mail: Email = new Email();
   recs: recordDtoForClient[];
 
-  constructor(private router: Router, private route: ActivatedRoute, private masterService: MasterService, private recordService: RecordService) {
+  constructor(private router: Router, private route: ActivatedRoute, private masterService: MasterService, private recordService: RecordService, private emailService: EmailService) {
+
   }
 
   ngOnInit(): void {
@@ -80,6 +85,11 @@ export class MasterPageComponent implements OnInit {
       this.deleteMaster = master;
       button.setAttribute('data-target', '#deleteMasterModal');
     }
+
+    if (mode === 'send') {
+      button.setAttribute('data-target', '#sendMessageModal');
+    }
+
     container!.appendChild(button);
     button.click();
   }
@@ -96,6 +106,17 @@ export class MasterPageComponent implements OnInit {
       }
     );
   }
+
+  public sendEmail(mail: Email) {
+    this.emailService.sendEmail(mail).subscribe(
+      data => console.log(data)
+    );
+
+
+
+  }
+
+
 
   canDeleteRecord(dateStr: string): boolean {
     const date = new Date(dateStr).getTime();

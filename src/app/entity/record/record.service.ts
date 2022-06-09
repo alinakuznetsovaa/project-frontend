@@ -20,8 +20,8 @@ export class RecordService {
     return this.http.get<Record[]>(`${this.RecordsUrl}`);
   }
 
-  public getRecordsOfMasterOnFavour(masterId: string, favourId: string): Observable<recordDtoForClientToCreateRecord[]> {
-    return this.http.get<recordDtoForClientToCreateRecord[]>(`${this.RecordsUrl}/master/${masterId}/favour/${favourId}`);
+  public getRecordsOfMasterOnFavour(masterId: string, categoryId: string): Observable<recordDtoForClientToCreateRecord[]> {
+    return this.http.get<recordDtoForClientToCreateRecord[]>(`${this.RecordsUrl}/master/${masterId}/category/${categoryId}`);
   }
 
 

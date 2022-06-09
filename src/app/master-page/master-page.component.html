@@ -45,15 +45,7 @@
               </div>
             </div>
 
-            <hr>
-            <div class="row">
-              <div class="col-sm-3">
-                <h6 class="mb-0">Address</h6>
-              </div>
-              <div class="col-sm-9 text-secondary">
-                {{master.address}}
-              </div>
-            </div>
+
 
 
             <hr>
@@ -67,6 +59,7 @@
                   (document.getElementById('masterregistration').style.display='block')"
                 >Log out</a>
                 <a (click)="gotoAddCategories()" class="btn btn-light">List of categories</a>
+                <a (click)="onOpenModal(master,'send')" class="btn btn-light"> Send email </a>
 
               </div>
             </div>
@@ -105,23 +98,18 @@
     </div>
 
 
-    <!-- Notification for no employees -->
-    <div *ngIf="recs?.length == 0" class="col-lg-12 col-md-12 col-xl-12">
-      <div class="alert alert-info" role="alert">
-        <h4 class="alert-heading">YOU HAVE NO RECORDS!</h4>
-        <p>No Records were found.</p>
-      </div>
-    </div>
+
+
 
 
     <div *ngIf="recs?.length != 0" class="tab-content">
+      <h4>List of your records:</h4>
       <div class="tab-pane active" id="home">
         <div class="table-responsive">
           <table class="table table-hover">
             <thead>
             <tr>
-              <th>Client First Name</th>
-              <th>Client Last Name</th>
+              <th>Client</th>
               <th>Email</th>
               <th>Title</th>
               <th>Price</th>
@@ -132,8 +120,7 @@
             </thead>
             <tbody>
             <tr *ngFor="let rec of recs">
-              <td> {{ rec.firstName }} </td>
-              <td> {{ rec.lastName }} </td>
+              <td> {{ rec.firstName }} {{rec.lastName}}</td>
               <td> {{ rec.address }} </td>
               <td> {{ rec.title }} </td>
               <td> {{ rec.price }} rub </td>
@@ -145,6 +132,7 @@
                 </div>
               </td>
 
+
             </tr>
             </tbody>
           </table>
@@ -152,5 +140,46 @@
         </div>
       </div>
     </div>
+    <!-- Notification for no employees -->
+    <div *ngIf="recs?.length == 0" class="col-lg-12 col-md-12 col-xl-12">
+      <div class="alert alert-info" role="alert">
+        <h4 class="alert-heading">YOU HAVE NO RECORDS!</h4>
+        <p>No Records were found.</p>
+      </div>
+    </div>
+    <!-- Send Message Modal -->
+    <div class="modal fade" id="sendMessageModal" tabindex="-1" role="dialog" aria-labelledby="sendMessageModal"
+         aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="sendModelLabel">Send promotional offer</h5>
+          </div>
+          <div class="modal-body">
+              <form #email>
+                <div class="form-group">
+                  <label for="recipient">Recipient</label>
+                  <input type="email" class="form-control" id="recipient" required [(ngModel)]="mail.recipient" name="recipient">
+                </div>
+
+                <div class="form-group">
+                  <label for="subject">Subject</label>
+                  <input type="text" class="form-control" id="subject" required [(ngModel)]="mail.subject" name="subject">
+                </div>
+
+                <div class="form-group">
+                  <label for="message">Message</label>
+                  <input type="text" class="form-control" id="message" required [(ngModel)]="mail.message" name="message">
+                </div>
+
+                <button (click)="sendEmail(mail); email.reset()" class="btn btn-danger"  data-dismiss="modal">Send</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+              </form>
+            </div>
+          </div>
+      </div>
+    </div>
+
   </div>
 </div>

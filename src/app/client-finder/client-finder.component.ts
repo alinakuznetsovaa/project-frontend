@@ -1,9 +1,11 @@
-import {Component} from '@angular/core';
+import {Component,OnInit} from '@angular/core';
 import {Client} from "../entity/client/client";
 import {ActivatedRoute, Router} from "@angular/router";
 import {ClientService} from "../entity/client/client.service";
 import {login} from "../login/login";
 import {HttpErrorResponse} from "@angular/common/http";
+import { Observable } from 'rxjs';
+import {HttpClient} from '@angular/common/http';
 
 
 @Component({
@@ -11,7 +13,7 @@ import {HttpErrorResponse} from "@angular/common/http";
   templateUrl: './client-finder.component.html',
   styleUrls: ['./client-finder.component.css']
 })
-export class ClientFinderComponent {
+export class ClientFinderComponent{
 
   clientId: string;
   email: string;
@@ -23,6 +25,7 @@ export class ClientFinderComponent {
   constructor(private route: ActivatedRoute,
               private router: Router,
               private clientService: ClientService,
+              // private http: HttpClient
   ) {
     this.client = new Client();
     this.log = new login();

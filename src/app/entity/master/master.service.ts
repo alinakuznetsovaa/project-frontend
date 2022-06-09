@@ -27,9 +27,7 @@ export class MasterService {
     return this.http.post<Master>(`${this.mastersUrl}/get-master-on-login`, log);
   }
 
-  public setFreeDatesOfMaster(category_id: string, master_id: string, date: Date): Observable<void> {
-    return this.http.post<void>(`${this.mastersUrl}/category/${category_id}/master/${master_id}/addfreetime`, date);
-  }
+
 
   public createMaster(master: Master): Observable<Master> {
     return this.http.post<Master>(`${this.mastersUrl}`, master);

@@ -5,7 +5,6 @@ export class Master {
   firstName: String;
   lastName: String;
   email: String;
-  address: String;
   password: string;
   categories: Category[];
 }

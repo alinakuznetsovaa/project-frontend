@@ -53,7 +53,7 @@ export class FavourAddDatesComponent implements OnInit {
     });
 
 
-    this.recordService.getRecordsOfMasterOnFavour(this.masterId, this.favourId).pipe(map((data: recordDtoForClientToCreateRecord[]) => {
+    this.recordService.getRecordsOfMasterOnFavour(this.masterId, this.categoryId).pipe(map((data: recordDtoForClientToCreateRecord[]) => {
       return data.sort((a, b) => {
         if (a.dateStart > b.dateStart) {
           return -1;

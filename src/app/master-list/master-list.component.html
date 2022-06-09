@@ -20,11 +20,10 @@
                  class="rounded-circle shadow" alt="">
             <h5 class="mb-0 mt-5">{{master.firstName}} {{master.lastName}}</h5>
             <p class="mb-3"><a href="mailto:{{ master.email }}">{{ master.email }}</a></p>
-            <p class="mb-3"><a> {{ master.address }}</a></p>
 
 
-            <div (click)="gotoMasterPage(master.id)" class="d-grid"><a class="btn btn-outline-primary radius-15">Show
-              master</a>
+            <div (click)="gotoMasterPage(master.id)" class="btn btn-light" >Show
+              master
             </div>
           </div>
         </div>

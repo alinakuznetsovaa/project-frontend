@@ -27,6 +27,8 @@ export class ClientService {
     return this.http.post<Client>(`${this.clientUrl}/get-client-on-login`, log);
   }
 
+
+
   public createClient(client: Client): Observable<Client> {
     return this.http.post<Client>(`${this.clientUrl}`, client);
   }
